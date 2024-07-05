@@ -1,3 +1,5 @@
+package com.some.name;
+
 public class Employee {
     private String firstName;
     private String lastName;
