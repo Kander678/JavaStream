@@ -1,5 +1,7 @@
 package com.some.name;
 
+import java.util.Optional;
+
 public class Employee {
     private String firstName;
     private String lastName;
@@ -20,8 +22,8 @@ public class Employee {
         return firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Optional<String> getLastName() {
+        return Optional.ofNullable(lastName);
     }
 
     public int getAge() {
@@ -40,4 +42,5 @@ public class Employee {
     public String toString() {
         return firstName + " " + lastName + " (" + age + " lat) - " + department + ": " + salary;
     }
+
 }
