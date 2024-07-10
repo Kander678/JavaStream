@@ -22,8 +22,8 @@ public class Employee {
         return firstName;
     }
 
-    public Optional<String> getLastName() {
-        return Optional.ofNullable(lastName);
+    public String getLastName() {
+        return lastName;
     }
 
     public int getAge() {

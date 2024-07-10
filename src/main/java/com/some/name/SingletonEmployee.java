@@ -2,6 +2,7 @@ package com.some.name;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class SingletonEmployee {
     private static final SingletonEmployee instance = new SingletonEmployee();
@@ -23,10 +24,13 @@ public class SingletonEmployee {
                 new Employee("Tomasz", "Zieliński", 28, "Sprzedaż", 4800.00)));
     }
 
-    public Employee firstLastName(String lastName) {
-        Employee employee = getEmployeeList().stream()
-                .filter(emp->emp.getLastName().orElse("").equals(lastName))
-                .findFirst().orElse(null);
-        return employee;
+    public String findFirstLastName(String lastName) {
+        Optional<Employee> employeeOptional = getEmployeeList().stream()
+                .filter(emp -> emp.getLastName() != null && emp.getLastName().equals(lastName))
+                .findFirst();
+
+        return employeeOptional.map(Employee::getLastName).orElse("");
     }
+
+
 }

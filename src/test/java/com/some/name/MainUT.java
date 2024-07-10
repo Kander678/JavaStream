@@ -50,7 +50,7 @@ public class MainUT {
     void olderThan30First() {
         Optional<String> olderThan30 = employees.stream()
                 .filter(emp -> emp.getAge() > 30)
-                .map(emp -> emp.getFirstName() + " " + emp.getLastName().orElse(""))
+                .map(emp -> emp.getFirstName() + " " + emp.getLastName())
                 .findFirst();
 
         assertTrue(olderThan30.isPresent());
@@ -79,8 +79,8 @@ public class MainUT {
     @Test
     void sortingByFirstAndLastName() {
         Optional<String> sortingListByNameAndLastName = employees.stream()
-                .sorted(Comparator.comparing(Employee::getFirstName).thenComparing(eli -> eli.getLastName().orElse("")))
-                .map(eli -> eli.getFirstName() + " " + eli.getLastName().orElse(""))
+                .sorted(Comparator.comparing(Employee::getFirstName).thenComparing(eli -> eli.getLastName()))
+                .map(eli -> eli.getFirstName() + " " + eli.getLastName())
                 .findFirst();
         assertTrue(sortingListByNameAndLastName.isPresent());
         assertEquals("Anna Nowak", sortingListByNameAndLastName.get());
@@ -152,22 +152,22 @@ public class MainUT {
     @Test
     void findByExistingLastName() {
         SingletonEmployee singletonEmployee = SingletonEmployee.getInstance();
-//       assertEquals("Kowalski",singletonEmployee.firstLastName("Kowalski").getLastName().orElse(""));
-        String employeeLastName = singletonEmployee.findFirstByLastName("Kowalski");
-        // tutaj zrob wyswietlenie nazwiska ktore znalazles
+
+        String employeeLastName = singletonEmployee.findFirstLastName("Kowalski");
+
+        System.out.println("Employee last name= "+employeeLastName);
         assertEquals("Kowalski", employeeLastName);
     }
 
     @Test
     void findByNonExistingLastName() {
         SingletonEmployee singletonEmployee = SingletonEmployee.getInstance();
-//        assertNull(singletonEmployee.firstLastName("RandomLastName"));
-        String employeeLastName = singletonEmployee.findFirstByLastName("Kowalski");
-        // tutaj zrob wyswietlenie nazwiska ktore znalazles
 
+        String employeeLastName = singletonEmployee.findFirstLastName("RandomLastName");
+
+        System.out.println("Employee last name= "+employeeLastName);
         assertEquals("", employeeLastName);
 
     }
-
 
 }
