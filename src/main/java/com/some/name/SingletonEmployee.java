@@ -13,8 +13,6 @@ public class SingletonEmployee {
         return instance;
     }
 
-    ;
-
     public List<Employee> getEmployeeList() {
         return new ArrayList<>(List.of(
                 new Employee("Jan", "Kowalski", 30, "IT", 5500.00),
