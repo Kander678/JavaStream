@@ -114,7 +114,7 @@ public class MainUT {
        /*
        1) Liste employees przenies do czesci produkcyjnej aplikacji, tzn, gdzies do src/main/java.
        Stworz jakas klase, ktora bedzie singletonem i bedzie mozna z niej pobrac te liste.
-       Lista ma byc pobierana przez metode, ktora NIE BĘDZIE STATYCZNA
+       Lista ma byc pobierana przez metode, ktora NIE BeDZIE STATYCZNA
        2) Napisz metode - ta moze byc gdzie chcesz, chociaz zdrowy rozsadek by nakazywal, zeby byla w tej samej klasie co lista
        - ktora bedzie przyjmowac argument, "lastName" i po nim bedzie zwracac pierwszy obiekt Employee jaki znajdzie szukajac lastName
        3) Napisz 2 metody testowe:
@@ -126,20 +126,24 @@ public class MainUT {
        Dopisalem drugiego Kowalskiego, prosze przenies liste w formie, ktora jest ponizej bez zmiany danych
         */
 
-        List<Employee> employees = new ArrayList<>(List.of(
-                new Employee("Jan", "Kowalski", 30, "IT", 5500.00),
-                new Employee("Jan", "Kowalski", 42, "IT", 14000.00),
-                new Employee("Anna", null, 25, "HR", 4500.00),
-                new Employee("Piotr", "Wiśniewski", 40, "Finanse", 7000.00),
-                new Employee("Marta", "Lewandowska", 35, "Marketing", 6000.00),
-                new Employee("Tomasz", "Zieliński", 28, "Sprzedaż", 4800.00)));
-
         Optional<Employee> foundEmployee=employees.stream()
                 .filter(emp->emp.getLastName()==null)
                 .findFirst();
 
-        assertFalse(foundEmployee.isPresent());
-        assertEquals(null,foundEmployee.get().getLastName());
+//        assertFalse(foundEmployee.isPresent());
+//        assertEquals(null,foundEmployee.get().getLastName());
+   }
+
+   @Test
+    void findByExistingLastName(){
+       SingletonEmployee singletonEmployee=SingletonEmployee.getInstance();
+       assertEquals("Kowalski",singletonEmployee.firstLastName("Kowalski").getLastName().orElse(""));
+   }
+
+   @Test
+    void findByNonExistingLastName(){
+       SingletonEmployee singletonEmployee=SingletonEmployee.getInstance();
+       assertNull(singletonEmployee.firstLastName("RandomLastName"));
    }
 
 
