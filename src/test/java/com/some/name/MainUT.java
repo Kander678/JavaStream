@@ -110,8 +110,25 @@ public class MainUT {
 
     @Test
     public void findEmployeeWithNullLastName() {
+
+       /*
+       1) Liste employees przenies do czesci produkcyjnej aplikacji, tzn, gdzies do src/main/java.
+       Stworz jakas klase, ktora bedzie singletonem i bedzie mozna z niej pobrac te liste.
+       Lista ma byc pobierana przez metode, ktora NIE BĘDZIE STATYCZNA
+       2) Napisz metode - ta moze byc gdzie chcesz, chociaz zdrowy rozsadek by nakazywal, zeby byla w tej samej klasie co lista
+       - ktora bedzie przyjmowac argument, "lastName" i po nim bedzie zwracac pierwszy obiekt Employee jaki znajdzie szukajac lastName
+       3) Napisz 2 metody testowe:
+       a. metoda testowa: findByExistingLastName, ktora szuka po istniejacym lastName, np. Kowalski
+       b. metoda testowa findByNonExistingLastName - ktora szuka po nieistniejacej wartosci lastName, np. Stuhr
+
+       W obydwu przypadkach sprobuj wyswietlic lastName na konsoli
+
+       Dopisalem drugiego Kowalskiego, prosze przenies liste w formie, ktora jest ponizej bez zmiany danych
+        */
+
         List<Employee> employees = new ArrayList<>(List.of(
                 new Employee("Jan", "Kowalski", 30, "IT", 5500.00),
+                new Employee("Jan", "Kowalski", 42, "IT", 14000.00),
                 new Employee("Anna", null, 25, "HR", 4500.00),
                 new Employee("Piotr", "Wiśniewski", 40, "Finanse", 7000.00),
                 new Employee("Marta", "Lewandowska", 35, "Marketing", 6000.00),
