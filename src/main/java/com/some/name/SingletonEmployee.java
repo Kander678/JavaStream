@@ -1,10 +1,11 @@
 package com.some.name;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class SingletonEmployee {
+public class SingletonEmployee implements Serializable {
     private static final SingletonEmployee instance = new SingletonEmployee();
 
     private SingletonEmployee() {

@@ -1,8 +1,9 @@
 package com.some.name;
 
+import java.io.Serializable;
 import java.util.Optional;
 
-public class Employee {
+public class Employee implements Serializable {
     private String firstName;
     private String lastName;
     private int age;
